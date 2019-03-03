@@ -1,0 +1,7 @@
+sw01_re.get_arp_table() = pulls the arp table
+sw01_re.get_interfaces() = Pulls interface statues info
+sw01_re.get_facts()['hostname'] = Devices hostname
+
+sw01_re.get_route_to("172.16.99.6") = Gets rout information
+sw01_re.get_route_to("172.16.99.6")['172.16.99.0/24'][0]['protocol'] 
+sw01_re.get_route_to("172.16.99.6")['172.16.99.0/24'][0]['outgoing_interface']
