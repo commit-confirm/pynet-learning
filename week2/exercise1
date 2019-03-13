@@ -1,0 +1,32 @@
+
+print("-" *10)
+print("File 1")
+print("-" *10)
+# Reading the file as a single string
+f = open("show_version.txt")
+output = f.read()
+
+# Printing the file
+print(output)
+
+# Displaying the type of data the file was read as
+print(type(output))
+
+# Closing the file
+f.close()
+
+print("-" *10)
+print("File 2")
+print("-" *10)
+
+# Opening second file in context manager fashion
+with open("show_version.txt") as output:
+    output = output.readlines()
+
+# Printing the file                                 
+print(output)                                       
+
+# Displaying the type of data the file was read as  
+print(type(output))                                 
+
+
