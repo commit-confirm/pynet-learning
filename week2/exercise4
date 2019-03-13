@@ -1,0 +1,14 @@
+#!/usr/bin/python3.6
+
+with open("show_ip_int_brief.txt") as f:
+    output = f.readlines()
+
+fa4 = output[5].strip()
+fields = fa4.split()
+fa4_ip = fields[1]
+fa4_intf = fields[0]
+
+tuple = (fa4_intf, fa4_ip)
+print(tuple)
+
+#Not done the pseudocode Linter test!

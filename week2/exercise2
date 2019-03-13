@@ -1,0 +1,21 @@
+#!/usr/bin/python3.6
+
+IP_List = ["1.1.1.1", "2.2.2.2", "3.3.3.3", "4.4.4.4"]
+New_List = ["6.6.6.6", "7.7.7.7"]
+End_List = ["8.8.8.8", "9.9.9.9"]
+
+for i in New_List:
+    IP_List.append(i)
+
+IP_List.extend(End_List)
+
+Concat_List = New_List + End_List
+
+print(IP_List[0], IP_List[-1])
+
+IP_List.pop(0)
+IP_List.pop(-1)
+print(IP_List)
+
+IP_List[0] = "1.1.1.1"
+print(IP_List[0])

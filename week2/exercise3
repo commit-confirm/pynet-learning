@@ -1,0 +1,17 @@
+#!/usr/bin/python3.6
+from pprint import pprint
+
+# Opening arp file
+with open("show_arp.txt") as output:
+	output = output.readlines()
+
+data = output[1:]
+
+data.sort()
+
+final_three = data[-3:]
+
+final_three = "\n".join(final_three)
+
+with open("arp_entries.txt", "wt") as f:
+    f.write(final_three.strip("\n"))
