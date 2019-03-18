@@ -1,0 +1,22 @@
+#!/usr/bin/python3.6
+
+
+with open("show_ip_bgp_summ.txt") as f:
+    output = f.readlines()
+
+f_line = output[0]
+l_line = output[-1]
+
+f_fields = f_line.split()
+asn_num = f_fields[-1]
+
+l_fields = l_line.split()
+peer_ip = l_fields[0]
+
+msg1 = "The Peer IP is:"
+msg2 = "The AS number is:"
+
+print("-" *35)
+print("{:<20}{:<20}".format(msg1, peer_ip))
+print("{:<20}{:<20}".format(msg2, asn_num))
+print("-" *35)
