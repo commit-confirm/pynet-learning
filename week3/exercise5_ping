@@ -1,0 +1,36 @@
+#!/usr/bin/python3.6
+from pprint import pprint
+from os import system
+
+WINDOWS = False
+
+cmd_linux = 'ping -c 2'
+cmd_windows = 'ping -n 2'
+# Ternary operator
+cmd = cmd_windows if WINDOWS else cmd_linux
+
+## Count Last Octets
+n = range(1, 255)
+
+# Define network prefix and empty ip list
+ip_base = "192.168.0."
+ip_full = []
+
+##For every n in range add to ip base
+for octet in n:
+    octet = ip_base + str(octet)
+    ip_full.append(octet)
+
+##Enumerate and print each IP with count
+for counter, value in enumerate(ip_full):
+    print(counter, "--->", value)
+
+ip_subset = []
+ip_subset = ip_full[2:6]
+
+print()                                                                                                  
+print('-' * 65)                                                                                          
+for i in ip_subset:
+    system("{} {}".format(cmd, i))
+print('-' * 65)                                     
+print()                                             

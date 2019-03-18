@@ -1,0 +1,19 @@
+#!/usr/bin/python3.6
+from pprint import pprint
+
+with open("show_lldp_neighbors_detail.txt") as f:
+    output = f.read()
+
+sys_name, port_id = (None, None)
+for line in output.splitlines():
+    if 'System Name: ' in line:
+        sys_name = line.split('System Name: ')
+    elif 'Port id: ' in line:
+        port_id = line.split('Port id: ') 
+    if sys_name and port_id:
+        break
+
+print() 
+print("System Name: {}".format(sys_name[-1]))
+print("Port ID: {}".format(port_id[-1]))
+print() 

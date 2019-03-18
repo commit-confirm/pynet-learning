@@ -1,0 +1,10 @@
+#!/usr/bin/python3.6
+from pprint import pprint
+
+for ip_addr, mac_addr in arp_table:
+	mac_split = mac_addr.split(".") 
+	mac_replace = mac_addr.replace(".", "")  
+	parts = [mac_replace[i:i+2] for i in range(0, len(mac_replace), 2)] 
+	new_mac = ":".join(parts)  
+	print(new_mac.upper())
+	
