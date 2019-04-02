@@ -44,3 +44,4 @@ for line in ip_addr.splitlines():
         #print("virtual link")
     print("{}{:^20}{:^20}{:^20}{}".format(msg1, int_name, mac_addr, ip_addr, msg1))
 print("-" *62)
+

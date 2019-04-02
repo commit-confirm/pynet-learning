@@ -1,0 +1,27 @@
+#!/usr/bin/python3.6
+import re
+
+with open("show_version.txt") as f:
+    output = f.read()
+
+
+#Use postive look behind to look after version up to the coma,
+#Get the match string using group(0) and strip any whitespace
+re_version = re.search("(?<=Version)[^,-]+", output)
+re_version = re_version.group(0).strip()
+
+#Use postive look behind to look after "board id" up to the new line
+#Get the match string using group(0) and strip any whitespace
+re_serial = re.search("(?<=board ID)[^\n-]+", output)
+re_serial = re_serial.group(0).strip()
+
+#Use postive look behind to look after "Configuration register is " up to the new line
+#Get the match string using group(0) and strip any whitespace
+re_conf_register = re.search("(?<=Configuration register is )[^\n-]+", output)
+re_conf_register = re_conf_register.group(0).strip()
+
+print("-" *40)
+print("{:>20}   {:<20}".format("OS Version:", re_version))
+print("{:>20}   {:<20}".format("Serial:", re_serial))
+print("{:>20}   {:<20}".format("Config Register:", re_conf_register))
+print("-" *40)

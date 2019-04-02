@@ -1,0 +1,9 @@
+#Generated from Jinja2 Script
+# Add hwaddr if known, not added by script
+
+BOOTPROTO=none
+DEVICE={{ PHY_INT_NAME }}
+HWADDR=
+ONBOOT=yes
+TYPE=Ethernet
+USERCTL=no

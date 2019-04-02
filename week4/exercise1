@@ -1,0 +1,36 @@
+#!/usr/bin/python3.6
+import re
+
+net_dev = {}
+net_dev['ip_addr'] = '192.168.100.10'
+net_dev['vendor'] = 'Juniper'
+net_dev['username'] = 'operator'
+net_dev['password'] = 'supersecret'
+
+#Print value of ip_addr key
+print(net_dev['ip_addr'])
+
+
+#Logic to work out platform based on vendor
+re_juniper = re.search("^.[unpier]+$", net_dev['vendor'])
+re_cisco = re.search("^.[isco]+$", net_dev['vendor'])
+
+if re_juniper is not None:
+    net_dev['platform'] = 'Junos'
+elif re_cisco is not None:
+    net_dev['platform'] = 'IOS'
+else:
+    net_dev['platform'] = 'Unknown'
+
+
+#BGP and update method
+bgp_fields = {}
+bgp_fields.update(bgp_as = '6500', peer_as = '65555', peer_ip = '192.168.100.11')
+
+#For loop through keys only
+for key in bgp_fields:
+    print(key)
+
+#For look through keys and values:
+for key, value in bgp_fields.items():
+    print(key, value)

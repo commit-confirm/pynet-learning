@@ -1,0 +1,43 @@
+#!/usr/bin/python3.6
+import re
+
+hudson_ips = []
+atlanta_ips = []
+chicago_ips = []
+
+
+hudson_ips.extend(('192.168.12.2', '192.168.12.6', '192.168.12.4', '192.168.12.32', 
+					'192.168.12.55', '192.168.12.99', '192.168.12.68', '192.168.12.99', 
+					'192.168.12.54', '192.168.12.99'))
+
+atlanta_ips.extend(('10.10.12.2', '10.10.12.6', '10.10.12.4', '10.10.12.32', 
+					'10.10.12.55', '10.10.12.99', '10.10.12.68', '10.10.12.99', 
+					'10.10.12.54', '10.10.12.99', '192.168.12.55'))
+
+chicago_ips.extend(('192.168.12.26', '192.168.12.64', '192.168.12.45', '192.168.12.32', 
+					'192.168.12.58', '192.168.12.94', '192.168.12.22', '192.168.12.99', 
+					'192.168.12.24', '192.168.12.64'))
+
+#Create sets instead of lists
+hudson_ipsets = set(hudson_ips)
+atlanta_ipsets = set(atlanta_ips)
+chicago_ipsets = set(chicago_ips)
+
+# Duplicate IPs at both sites (set intersection)
+print("-" * 80)
+print()
+print("-" * 80)
+print("Duplicate IPs at Houston and Atlanta sites:\n\n{}".format(hudson_ipsets & atlanta_ipsets))
+print("-" * 80)
+print()
+print("-" * 80)
+print("Duplicate IPs at all three sites:\n\n{}".format(hudson_ipsets & atlanta_ipsets & chicago_ipsets))
+print("-" * 80)
+print()
+
+# Chicago unique IP addresses
+print("-" * 80)
+print("Chicago unique IP addresses:\n\n{}".format(
+        chicago_ipsets.difference(hudson_ipsets).difference(atlanta_ipsets)))
+print("-" * 80)
+print()
