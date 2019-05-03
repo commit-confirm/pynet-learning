@@ -1,0 +1,28 @@
+from netmiko import Netmiko
+import getpass
+
+#Define device parameters
+left_device = {
+    'host': '192.168.0.67',
+    'username': 'python',
+    'password': 'Python',
+#   'password': getpass
+    'device_type': 'juniper'
+}
+
+
+#Define SSH connection to device passing in device params
+left_conn = Netmiko(**left_device)
+
+#Enter Cli & Configure mode then verify
+left_conn.enter_cli_mode()
+left_conn.config_mode()
+left_conn.find_prompt()
+left_conn.check_config_mode()
+
+#Send config 
+cmd = left_conn.send_config_from_file("changes.txt")
+
+#verify 
+left_conn.find_prompt()
+

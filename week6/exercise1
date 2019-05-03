@@ -1,0 +1,18 @@
+from netmiko import Netmiko
+
+#Define device parameters
+left_device = {
+    'host': '192.168.0.67',
+    'username': 'root',
+    'password': 'Juniper',
+    'device_type': 'juniper'
+}
+
+#Define SSH connection to device passing in device params
+left_conn = Netmiko(**left_device)
+
+#print the ssh session prompt
+print(left_conn.find_prompt())
+
+#cleanly close the session
+left_conn.disconnect()

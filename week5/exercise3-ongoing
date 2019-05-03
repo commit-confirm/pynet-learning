@@ -1,0 +1,10 @@
+#!/usr/bin/python3.6
+
+arp1 = "c0-05-c2-75-25-58"
+arp2 = "c0.05.c2.22.33.44"
+arp_list = [arp1, arp2]
+
+def mac_format(arp_list):
+    for mac in arp_list:
+        mac_split = re.split("[.]|[-]", arp_list)
+        print(mac_split)

@@ -1,0 +1,18 @@
+from netmiko import Netmiko
+import getpass
+
+#Define device parameters
+left_device = {
+    'host': '192.168.0.67',
+    'username': 'root',
+    'password': 'Juniper',
+#   'password': getpass
+    'device_type': 'juniper'
+}
+
+#Define SSH connection to device passing in device params
+left_conn = Netmiko(**left_device)
+
+#Send command and save/print the return
+interfaces = left_conn.send_command("show interface terse")
+print(interfaces)

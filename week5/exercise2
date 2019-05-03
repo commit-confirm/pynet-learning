@@ -1,0 +1,19 @@
+#!/usr/bin/python3.6
+import re
+
+
+def rando_ip(net = "10.10.10."):
+    """
+    Function to print a random IP in either the default network 10.10.10. or the user defined network
+    """
+    print("{}{}{}".format("IP Address: ", net, random.randint(1,254)))
+
+
+#No arguement call
+rando_ip()
+
+#Positional Arg call
+rando_ip("192.168.7.")
+
+#Named arg call 
+rando_ip(net = "192.168.7.")

@@ -1,0 +1,25 @@
+from netmiko import Netmiko
+import getpass
+
+#Define device parameters
+left_device = {
+    'host': '192.168.0.67',
+    'username': 'python',
+    'password': 'Python',
+#   'password': getpass
+    'device_type': 'juniper'
+}
+
+#Define SSH connection to device passing in device params
+left_conn = Netmiko(**left_device)
+
+#Enter Cli mode
+left_conn.enter_cli_mode()
+cmd = "request system reboot"
+
+#Send command and save/print the return
+output = left_conn.send_command_timing(cmd, strip_command=False, strip_prompt=False)
+if "[yes,no]" in output:
+    output += left_conn.send_command_timing("no \n", strip_command=False, strip_prompt=False)
+
+print(output)

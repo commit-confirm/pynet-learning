@@ -1,0 +1,35 @@
+from netmiko import Netmiko
+import getpass
+
+#Define device parameters
+left_device = {
+    'host': '192.168.0.67',
+    'username': 'python',
+    'password': 'Python',
+#   'password': getpass
+    'device_type': 'juniper'
+}
+
+
+#Define SSH connection to device passing in device params
+left_conn = Netmiko(**left_device)
+
+#Enter Cli & Configure mode then verify
+left_conn.enter_cli_mode()
+left_conn.config_mode()
+left_conn.find_prompt()
+left_conn.check_config_mode()
+
+#Send the config 
+output = left_conn.send_command("set system host-name left-new")
+
+#Get a show compare
+compare = left_conn.send_command("show | compare")
+print(compare)
+
+#commit quit and verify 
+left_conn.commit(and_quit=True)
+left_conn.find_prompt()
+
+#Discconect and call it a day
+left_conn.disconnect()

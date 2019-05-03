@@ -1,0 +1,26 @@
+#!/usr/bin/python3.6
+import re
+
+def ssh_conn2(ip_addr, username, password, vendor = "Cisco"):
+    """
+    A function to take and print the args of IP address, username and password.
+    """
+    print("{} {}\n{} {}\n{} {}\n{} {}".format("IP: ", ip_addr, "Username: ", 
+        username, "Password: ", password, "Vendor: ", vendor))
+
+
+#Positional function call without vendor
+ssh_conn2("1.1.1.1", "test", "password")
+
+#Positional function call with Vendor
+ssh_conn2("1.1.1.1", "test", "password", "Juniper")
+
+#manual dict
+my_dict = {}
+my_dict['ip_addr'] = "1.1.1.1"
+my_dict['username'] = "test"
+my_dict['password'] = "abc123"
+my_dict['vendor'] = "Juniper"
+
+#Calling function with  
+ssh_conn2(**my_dict)

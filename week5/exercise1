@@ -1,0 +1,18 @@
+#!/usr/bin/python3.6
+import re
+
+def ssh_conn(ip_addr, username, password):
+    """
+    A function to take and print the args of IP address, username and password.
+    """
+    print("{} {}\n{} {}\n{} {}".format("IP: ", ip_addr, "Username: ", username, "Password: ", password))
+
+
+#Positional function call
+ssh_conn("1.1.1.1", "test", "password")
+
+#Named function call
+ssh_conn(ip_addr = "1.1.1.1", username = "test", password = "password")
+
+#Mixed Named & Positional function call
+ssh_conn("1.1.1.1", username = "test", password = "password")
