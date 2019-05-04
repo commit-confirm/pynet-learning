@@ -1,11 +1,41 @@
 import json
 from pprint import pprint
 from collections import Counter
+import os
+import datetime
 
 # ______________________________________________________________ #
 
-with open("tshark-json", "r") as f:
-    tshark_output = json.load(f)
+
+def run_capture(pckt_count=100, dir_loc="/tmp/"):
+    d = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+    os.system(
+        'sudo tshark -i any -n -c  {} -f "ip"  -T fields -e ip.src_host -e ip.dst_host -e tcp.dstport -e udp.dstport -T json -w {}{}.pcap > {}{}.txt -F pcap'.format(
+            pckt_count, dir_loc, d, dir_loc, d
+        )
+    )
+
+    print(
+        """\n \nTwo files saves:
+        {}{}.pcap
+        {}{}.txt \n\n""".format(
+            dir_loc, d, dir_loc, d
+        )
+    )
+
+    global tshark_json_txt
+    tshark_json_txt = "{}{}.txt".format(dir_loc, d)
+
+
+def read_capture():
+    global tshark_output
+    with open(tshark_json_txt, "r") as f:
+        tshark_output = json.load(f)
+
+
+run_capture()
+read_capture()
+
 
 # ______________________________________________________________ #
 
